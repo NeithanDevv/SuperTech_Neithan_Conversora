@@ -1,0 +1,122 @@
+<!-- Criado por Marise Miranda | 2017.1 -->
+<!-- Adaptado por Matheus Matos | 2025.1 -->
+<!-- Incrementado por Nathan Morais | 2025.2 -->
+
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPTecher's Machine</title>
+    <style>
+        body {
+            background-color: #e0f7fa;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #004d40;
+        }
+
+        .box {
+            background: #ffffff;
+            border: 2px solid #004d40;
+            border-radius: 10px;
+            padding: 20px;
+            width: 350px;
+            margin: auto;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        input,
+        select,
+        button {
+            padding: 8px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #004d40;
+        }
+
+        button {
+            background-color: #004d40;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #00796b;
+        }
+
+        .resultado {
+            text-align: left;
+            margin-top: 15px;
+        }
+
+        .resultado p {
+            background: #f1f1f1;
+            padding: 8px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>SPTecher's Machine</h1>
+
+    <div class="box">
+        <h3>Digite um número:</h3>
+        <input id="valor" type="text" placeholder="Ex: 42">
+        <br>
+        <label for="base">Base de entrada:</label>
+        <select id="base">
+            <option value="10">Decimal</option>
+            <option value="2">Binário</option>
+            <option value="8">Octal</option>
+            <option value="16">Hexadecimal</option>
+        </select>
+        <br>
+        <button onclick="converter()">Converter</button>
+
+        <div class="resultado">
+            <h3>Resultados:</h3>
+            <p><b>Decimal:</b> <span id="resDecimal"></span></p>
+            <p><b>Binário:</b> <span id="resBin"></span></p>
+            <p><b>Octal:</b> <span id="resOct"></span></p>
+            <p><b>Hexadecimal:</b> <span id="resHex"></span></p>
+        </div>
+    </div>
+    <div>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/Vctnbk0RWVY" frameborder="0"
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <script>
+        function converter() {
+            var valorEntrada = valor.value.trim();
+            var baseEntrada = parseInt(base.value);
+
+            if (valorEntrada == "") {
+                alert("Digite um número!");
+                return;
+            }
+
+            var decimal = parseInt(valorEntrada, baseEntrada);
+
+            if (isNaN(decimal)) {
+                alert("Número inválido para a base selecionada!");
+                return;
+            }
+
+            resDecimal.innerHTML = decimal.toString(10);
+            resBin.innerHTML = decimal.toString(2);
+            resOct.innerHTML = decimal.toString(8);
+            resHex.innerHTML = decimal.toString(16).toUpperCase();
+        }
+    </script>
+</body>
+
+</html>
